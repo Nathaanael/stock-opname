@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -18,9 +17,12 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
+        'nik',
         'name',
         'email',
         'password',
+        'role',
+        'must_reset_password',
     ];
 
     /**
@@ -43,6 +45,44 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'must_reset_password' => 'boolean',
         ];
+    }
+
+    /**
+     * Check if user is an owner.
+     */
+    public function isOwner(): bool
+    {
+        return $this->role === 'owner';
+    }
+
+    /**
+     * Check if user is an admin gudang.
+     */
+    public function isAdminGudang(): bool
+    {
+        return $this->role === 'admin_gudang';
+    }
+
+    /**
+     * Check if user is a kasir.
+     */
+    public function isKasir(): bool
+    {
+        return $this->role === 'kasir';
+    }
+
+    /**
+     * Get role display name.
+     */
+    public function getRoleDisplayNameAttribute(): string
+    {
+        return match ($this->role) {
+            'owner' => 'Owner',
+            'admin_gudang' => 'Admin Gudang',
+            'kasir' => 'Kasir',
+            default => $this->role,
+        };
     }
 }
