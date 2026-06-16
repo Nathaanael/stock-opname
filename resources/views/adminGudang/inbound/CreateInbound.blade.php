@@ -119,18 +119,17 @@
 <!-- HTML5-QRCode Library -->
 <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
 <script>
-    let html5QrcodeScanner = null;
+    let html5QrCode = null;
 
     function startScanner() {
         const scannerContainer = document.getElementById('scanner_container');
         scannerContainer.classList.remove('hidden');
 
-        if (!html5QrcodeScanner) {
+        if (!html5QrCode) {
+            html5QrCode = new Html5Qrcode("reader");
             const config = {
                 fps: 15,
                 qrbox: { width: 250, height: 120 },
-                rememberLastUsedCamera: true,
-                supportedScanTypes: [Html5QrcodeScanType.SCAN_TYPE_CAMERA],
                 formatsToSupport: [
                     Html5QrcodeSupportedFormats.EAN_13,
                     Html5QrcodeSupportedFormats.EAN_8,
@@ -139,19 +138,29 @@
                     Html5QrcodeSupportedFormats.UPC_A
                 ]
             };
-            html5QrcodeScanner = new Html5QrcodeScanner("reader", config, false);
-            html5QrcodeScanner.render(onScanSuccess, () => {});
+            
+            html5QrCode.start(
+                { facingMode: "environment" },
+                config,
+                onScanSuccess,
+                (errorMessage) => { /* ignore */ }
+            ).catch((err) => {
+                console.error("Gagal memulai kamera", err);
+                alert("Kamera tidak dapat diakses. Pastikan Anda memberikan izin kamera pada browser.");
+            });
         }
     }
 
     function stopScanner() {
         const scannerContainer = document.getElementById('scanner_container');
-        if (html5QrcodeScanner) {
-            html5QrcodeScanner.clear().then(() => {
-                html5QrcodeScanner = null;
+        if (html5QrCode) {
+            html5QrCode.stop().then(() => {
+                html5QrCode.clear();
+                html5QrCode = null;
                 scannerContainer.classList.add('hidden');
             }).catch(error => {
-                console.error("Failed to clear scanner:", error);
+                console.error("Failed to stop scanner:", error);
+                scannerContainer.classList.add('hidden');
             });
         } else {
             scannerContainer.classList.add('hidden');
