@@ -15,7 +15,6 @@ return new class extends Migration
             $table->string('nik')->unique()->after('id');
             $table->enum('role', ['owner', 'admin_gudang', 'kasir'])->default('kasir')->after('name');
             $table->boolean('must_reset_password')->default(true)->after('password');
-            $table->string('email')->nullable()->change();
         });
     }
 
@@ -26,7 +25,6 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn(['nik', 'role', 'must_reset_password']);
-            $table->string('email')->nullable(false)->change();
         });
     }
 };

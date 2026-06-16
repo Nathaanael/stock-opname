@@ -54,6 +54,41 @@ Route::middleware('auth')->group(function () {
             Route::get('/items/create', function () {
                 return view('adminGudang.masterData.CreateBarang', ['title' => 'Tambah Master Barang']);
             })->name('items.create');
+
+            // Barang Masuk (Inbound)
+            Route::get('/inbound', function () {
+                return view('adminGudang.inbound.inbound', ['title' => 'Barang Masuk']);
+            })->name('inbound.index');
+
+            Route::get('/inbound/create', function () {
+                return view('adminGudang.inbound.CreateInbound', ['title' => 'Tambah Barang Masuk']);
+            })->name('inbound.create');
+
+            // Barang Keluar (Outbound)
+            Route::get('/outbound', function () {
+                return view('adminGudang.outbound.outbound', ['title' => 'Barang Keluar']);
+            })->name('outbound.index');
+
+            Route::get('/outbound/create', function () {
+                return view('adminGudang.outbound.CreateOutbound', ['title' => 'Catat Barang Keluar']);
+            })->name('outbound.create');
+
+            // Stock Opname
+            Route::get('/stock-opname', function () {
+                return view('adminGudang.stockOpname.StockOpname', ['title' => 'Stock Opname']);
+            })->name('stock_opname.index');
+            
+            Route::get('/stock-opname/create', function () {
+                return view('adminGudang.stockOpname.CreateStockOpname', ['title' => 'Mulai SO Baru']);
+            })->name('stock_opname.create');
+
+            Route::get('/stock-opname/scan', function () {
+                return view('adminGudang.stockOpname.ScanStockOpname', ['title' => 'Scanner Stock Opname']);
+            })->name('stock_opname.scan');
+
+            Route::get('/stock-opname/review', function () {
+                return view('adminGudang.stockOpname.ReviewStockOpname', ['title' => 'Review Stock Opname']);
+            })->name('stock_opname.review');
             
         });
     });

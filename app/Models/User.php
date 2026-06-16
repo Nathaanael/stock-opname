@@ -19,7 +19,6 @@ class User extends Authenticatable
     protected $fillable = [
         'nik',
         'name',
-        'email',
         'password',
         'role',
         'must_reset_password',
@@ -43,7 +42,6 @@ class User extends Authenticatable
     protected function casts(): array
     {
         return [
-            'email_verified_at' => 'datetime',
             'password' => 'hashed',
             'must_reset_password' => 'boolean',
         ];

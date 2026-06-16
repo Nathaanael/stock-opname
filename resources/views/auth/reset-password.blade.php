@@ -1,7 +1,7 @@
 @extends('layouts.auth')
 
 @section('content')
-    <div class="relative z-1 flex min-h-screen w-full bg-white">
+    <div class="relative z-1 flex min-h-screen w-full bg-white" x-data="passwordRequirements()">
 
         <!-- ===== Left Panel ===== -->
         <div class="relative hidden w-1/2 overflow-hidden lg:flex lg:items-center lg:justify-center">
@@ -43,7 +43,7 @@
                 </p>
 
                 <!-- Requirements List -->
-                <div class="space-y-3 w-full" x-data="passwordRequirements()">
+                <div class="space-y-3 w-full">
 
                     <!-- Requirement 1 -->
                     <div class="flex items-center gap-4 rounded-xl px-5 py-3.5 text-left transition-all duration-500"
@@ -156,8 +156,7 @@
             </div>
 
             <!-- Form Content -->
-            <div class="mx-auto flex w-full max-w-md flex-1 flex-col justify-center px-6 py-8 sm:px-8 lg:px-12"
-                x-data="passwordRequirements()">
+            <div class="mx-auto flex w-full max-w-md flex-1 flex-col justify-center px-6 py-8 sm:px-8 lg:px-12">
                 <div class="animate-fade-in-up">
                     <!-- Heading -->
                     <div class="mb-8">
