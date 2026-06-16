@@ -16,8 +16,6 @@ $paths = [
     'APP_URL' => 'https://stock-opname-eta.vercel.app',
     'ASSET_URL' => 'https://stock-opname-eta.vercel.app',
     'LOG_CHANNEL' => 'stderr',
-    'DB_CONNECTION' => 'sqlite',
-    'DB_DATABASE' => __DIR__ . '/../database/database.sqlite',
     'SESSION_DRIVER' => 'cookie',
     'CACHE_STORE' => 'array',
 ];
