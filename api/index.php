@@ -10,6 +10,15 @@ $paths = [
     'APP_EVENTS_CACHE' => '/tmp/events.php',
     'VIEW_COMPILED_PATH' => '/tmp',
     'LARAVEL_STORAGE_PATH' => '/tmp',
+    'APP_ENV' => 'production',
+    'APP_DEBUG' => 'true',
+    'APP_KEY' => 'base64:KzW4mLYruA7fPUeMIb9JXkR0GlfWctHqHyyDej9r7RY=',
+    'APP_URL' => 'https://stock-opname-eta.vercel.app/',
+    'LOG_CHANNEL' => 'stderr',
+    'DB_CONNECTION' => 'sqlite',
+    'DB_DATABASE' => '/var/task/database/database.sqlite',
+    'SESSION_DRIVER' => 'cookie',
+    'CACHE_STORE' => 'array',
 ];
 
 foreach ($paths as $key => $value) {
