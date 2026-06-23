@@ -33,7 +33,7 @@
         </a>
 
         <!-- Kotak Stock Opname -->
-        <a href="{{ route('admin_gudang.stock_opname.index') }}" class="group relative flex flex-col items-center justify-center rounded-3xl bg-white border border-gray-100 dark:border-gray-800 dark:bg-gray-900 p-10 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl overflow-hidden min-h-[320px]">
+        <a href="{{ route('admin_gudang.dashboard') }}" class="group relative flex flex-col items-center justify-center rounded-3xl bg-white border border-gray-100 dark:border-gray-800 dark:bg-gray-900 p-10 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl overflow-hidden min-h-[320px]">
             <!-- Decorative gradient blur -->
             <div class="absolute -top-24 -right-24 w-56 h-56 bg-pink-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10 transition-opacity duration-300 group-hover:opacity-30"></div>
             
