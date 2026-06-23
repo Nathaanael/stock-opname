@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->string('nik')->unique()->after('id');
-            $table->enum('role', ['owner', 'admin_gudang', 'kasir'])->default('kasir')->after('name');
+            $table->enum('role', ['owner', 'admin_gudang', 'kasir'])->default('owner')->after('name');
             $table->boolean('must_reset_password')->default(true)->after('password');
         });
     }

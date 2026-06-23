@@ -16,7 +16,7 @@
 <div class="rounded-2xl border border-gray-200 bg-white p-5 shadow-theme-xs dark:border-gray-800 dark:bg-gray-900 sm:p-7.5">
     <div class="mb-4">
         <h3 class="text-xl font-semibold text-gray-800 dark:text-white/90">
-            Selamat Datang, Admin Gudang!
+            Selamat Datang, {{ auth()->user()->name ?? 'Owner' }}!
         </h3>
         <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">
             Ini adalah halaman dashboard utama untuk Anda. Silakan kelola stok dan data barang melalui menu yang tersedia.

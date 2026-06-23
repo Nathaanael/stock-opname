@@ -28,18 +28,13 @@ Route::middleware('auth')->group(function () {
 
     // Protected routes (require password to be reset)
     Route::middleware('force.password.reset')->group(function () {
-        // Root Router (Redirect based on role)
+        // Root Router
         Route::get('/', function () {
-            $role = auth()->user()->role;
-            if ($role === 'admin_gudang') {
-                return redirect()->route('admin_gudang.dashboard');
-            }
-            // Fallback for other roles (kasir, owner) for now
-            return view('dashboard.DashboardAdmin', ['title' => 'Dashboard']);
+            return redirect()->route('admin_gudang.dashboard');
         })->name('dashboard');
 
-        // Admin Gudang Routes
-        Route::middleware('role:admin_gudang')->prefix('admin-gudang')->name('admin_gudang.')->group(function () {
+        // Routes
+        Route::middleware('role:owner')->prefix('admin-gudang')->name('admin_gudang.')->group(function () {
             
             // Dashboard Admin Gudang
             Route::get('/dashboard', function () {

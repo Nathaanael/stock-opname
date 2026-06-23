@@ -33,7 +33,7 @@ class MenuHelper
         ];
 
         $roleMenus = match ($role) {
-            'admin_gudang' => [
+            'owner' => [
                 [
                     'icon'  => 'dashboard',
                     'name'  => 'Dashboard',
@@ -64,16 +64,6 @@ class MenuHelper
                     'name' => 'User Profile',
                     'path' => '/profile',
                 ],
-            ],
-
-            'kasir' => [
-                $dashboard,
-                // Menu Kasir bisa ditambahkan di sini nanti
-            ],
-
-            'owner' => [
-                $dashboard,
-                // Menu Owner bisa ditambahkan di sini nanti
             ],
 
             default => [$dashboard],
