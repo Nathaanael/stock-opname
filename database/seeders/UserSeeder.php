@@ -18,7 +18,6 @@ class UserSeeder extends Seeder
             ['nik' => '01'],
             [
                 'name' => 'Pemilik Toko',
-                'email' => 'owner@stockopname.com',
                 'password' => Hash::make('01'), // default password = NIK
                 'role' => 'owner',
                 'must_reset_password' => true,

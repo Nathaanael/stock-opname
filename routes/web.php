@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Landing\LandingPageController;
 
 // ========================================
 // Guest Routes (unauthenticated)
@@ -28,10 +29,8 @@ Route::middleware('auth')->group(function () {
 
     // Protected routes (require password to be reset)
     Route::middleware('force.password.reset')->group(function () {
-        // Root Router
-        Route::get('/', function () {
-            return redirect()->route('admin_gudang.dashboard');
-        })->name('dashboard');
+        // Root Router (Landing Page)
+        Route::get('/', [LandingPageController::class, 'index'])->name('dashboard');
 
         // Routes
         Route::middleware('role:owner')->prefix('admin-gudang')->name('admin_gudang.')->group(function () {
